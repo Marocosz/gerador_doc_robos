@@ -1,4 +1,4 @@
-from py_to_str import ler_conteudo_py
+from functions import ler_conteudo_py
 
 str1, nome_arquivo = ler_conteudo_py(
     "c:\\Users\\marcos.rodrigues\\Documents\\Projetos\\gerador_doc_robos\\main.py")
