@@ -61,5 +61,3 @@ Você é um assistente de IA especializado em analisar código Python e criar do
 
 Descreva o que acontece quando uma entrada (ex: um e-mail) não corresponde a nenhum dos clientes configurados. Qual é o fluxo de exceção ou o caminho alternativo?
 """
-
-print(nome_arquivo)
