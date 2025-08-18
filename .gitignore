@@ -179,3 +179,7 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Ignorar as pastas docs e scripts_a_ler
+docs/
+scripts_a_ler/

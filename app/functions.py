@@ -104,7 +104,7 @@ def criar_docx_formatado(conteudo: str, nome_arquivo_final: str):
         nome_arquivo_final += '.docx'
 
     try:
-        doc.save(nome_arquivo_final)
+        doc.save(f"docs/{nome_arquivo_final}")
         print(f"'{nome_arquivo_final}' salvo com sucesso")
     except Exception as e:
         print(f"Erro ao salvar o arquivo .docx: {e}")
@@ -126,7 +126,7 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
     """
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",  # Recomendo o 1.5 Pro, é excelente para análise de código
+            model="gemini-2.5-flash",
             temperature=0.1,                # Temperatura muito baixa para alta fidelidade ao código
             google_api_key=os.getenv("GEMINI_API_KEY")
         )

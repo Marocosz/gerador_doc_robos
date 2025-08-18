@@ -54,6 +54,7 @@ H2: Fluxo de Execução Detalhado
   * Processamentos principais (transformações, filtros, agregações)
   * Decisões e bifurcações de fluxo
   * Saídas (logs, arquivos, inserts em DB, retornos)
+  * Entre outros paradígmas relevantes caso o script necessite da explicação deles
 * Indique quais trechos bloqueiam a execução (aguardam resposta, loop infinito, etc.).
 * Aqui eu quero bem detalhado
 
@@ -70,12 +71,7 @@ H2: Integrações e Consultas (DB/API)
 * **Conexões de banco:** nome lógico, método de conexão, credenciais via `.env` (**não exponha valores**)
 * **Consultas SQL:** descreva o objetivo de cada query (filtragem, agregação, ordenação).
 * **APIs chamadas:** endpoint, método HTTP, dados enviados/recebidos.
-* **Filtragens críticas:** condições `WHERE`, parâmetros de URL.
-
-H2: Cálculos e Regras de Negócio
-* Fórmulas e transformações importantes.
-* Condições para decisões críticas (ex.: disparar alerta).
-* Limiares configuráveis.
+* **Filtragens críticas:** condições `WHERE`, parâmetros de URL, etc.
 
 H2: Logs e Observabilidade
 * Onde e como os logs são gravados.
@@ -86,28 +82,10 @@ H2: Tratamento de erros, exceções e limites conhecidos
 * Tipos de erros tratados e como são manipulados.
 * Situações não tratadas e riscos.
 
-H2: Como executar
-* Comando mínimo de execução (`python {nome_arquivo} [args]`).
-* Exemplos com parâmetros reais.
-* Passos prévios (instalar libs, criar arquivos, exportar variáveis).
-
-H2: Testes sugeridos (checklist)
-* Casos de sucesso e de falha.
-* Testes de limites.
-* Cenários com entradas inválidas ou ausência de recursos.
-
-H2: Considerações de performance e segurança
-* Uso de CPU/memória esperado.
-* Gargalos possíveis.
-* Boas práticas para evitar vazamento de dados.
-
-H2: Melhorias futuras
-* Sugira incrementos possíveis, com foco em escalabilidade, robustez e clareza de código.
-
-⚠️ Importante:
+Importante:
 - Se detectar que o código é muito diferente do exemplo (ex.: script de ETL, automação de planilhas, web scraper), crie seções adicionais específicas (ex.: “H2: Mapeamento de Campos”, “H2: Regras de Paginação”, “H2: Autenticação”) seguindo o mesmo padrão de formatação.
 - Nunca misture informações de diferentes partes sem deixar claro se é **Fato do código** ou **Inferência**.
-- Sempre mantenha profundidade técnica — explique não apenas **o que** é feito, mas também **por que**.
+- Sempre mantenha profundidade técnica — explique não apenas **o que** é feito mas **como** também
 
 📌 EXEMPLO DE RESPOSTA ESPERADA (SIGA O FORMATO E DETALHES ABAIXO):
 
