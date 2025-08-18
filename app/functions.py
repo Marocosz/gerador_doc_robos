@@ -35,6 +35,45 @@ def ler_conteudo_py(caminho_do_arquivo: str) -> str:
         return f"Erro: O arquivo no caminho '{caminho_do_arquivo}' não foi encontrado."
     except Exception as e:
         return f"Ocorreu um erro inesperado ao ler o arquivo: {e}"
+    
+    
+def ler_conteudo_pas(caminho_do_arquivo: str):
+    """
+    Lê o conteúdo de um arquivo Pascal (.pas), tentando as codificações
+    UTF-8 e latin-1, e o retorna como uma tupla contendo a string do
+    conteúdo e o nome do arquivo.
+
+    Args:
+        caminho_do_arquivo (str): O caminho completo para o arquivo .pas.
+
+    Returns:
+        tuple[str, str] | str: Uma tupla (conteúdo, nome_arquivo) em caso de
+                                 sucesso, ou uma string de erro em caso de falha.
+    """
+    if not caminho_do_arquivo.lower().endswith('.pas'):
+        return f"Erro: O arquivo '{caminho_do_arquivo}' não parece ser um arquivo Pascal (.pas)."
+
+    try:
+        # 1ª TENTATIVA: Tenta ler com UTF-8, que é o padrão moderno
+        with open(caminho_do_arquivo, 'r', encoding='utf-8') as arquivo:
+            conteudo_string = arquivo.read()
+            print("Arquivo lido com sucesso usando a codificação UTF-8.")
+            return conteudo_string, os.path.basename(caminho_do_arquivo)
+    except UnicodeDecodeError:
+        # 2ª TENTATIVA: Se UTF-8 falhar, tenta com 'latin-1', comum em arquivos Windows
+        print("UTF-8 falhou. Tentando ler com a codificação latin-1...")
+        try:
+            with open(caminho_do_arquivo, 'r', encoding='latin-1') as arquivo:
+                conteudo_string = arquivo.read()
+                print("Arquivo lido com sucesso usando a codificação latin-1.")
+                return conteudo_string, os.path.basename(caminho_do_arquivo)
+        except Exception as e:
+            return f"Falha ao ler o arquivo com UTF-8 e também com latin-1. Erro final: {e}"
+    except FileNotFoundError:
+        return f"Erro: O arquivo no caminho '{caminho_do_arquivo}' não foi encontrado."
+    except Exception as e:
+        return f"Ocorreu um erro inesperado ao ler o arquivo: {e}"
+
 
 
 def criar_docx_formatado(conteudo: str, nome_arquivo_final: str):
