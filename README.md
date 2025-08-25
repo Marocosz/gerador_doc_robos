@@ -94,6 +94,7 @@ A aplicação web possui uma funcionalidade central exposta através de algumas 
 A interface do usuário é simples e funcional, projetada para ser intuitiva.
 
 ### Tela Inicial
+
 A tela inicial apresenta um formulário claro onde o usuário pode:
 -
    - Selecionar um ou mais arquivos de código (`.py` ou `.pas`).
@@ -101,9 +102,11 @@ A tela inicial apresenta um formulário claro onde o usuário pode:
    - Clicar no botão "Gerar Documentação" para iniciar o processo.
 
 ### Tela de Espera
+
 Após o envio, o formulário é substituído por um indicador de carregamento animado e uma mensagem "Gerando documentação, por favor aguarde...". Isso informa ao usuário que o processamento está em andamento, o que é crucial para operações que podem levar vários segundos.
 
 ### Tela de Resultados
+
 Ao final do processo, o usuário é direcionado para uma página de resultados que exibe:
 -
    - Uma lista de "Documentos Gerados com Sucesso", com um link para download para cada arquivo.
