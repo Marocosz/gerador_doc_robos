@@ -183,3 +183,4 @@ cython_debug/
 # Ignorar as pastas docs e scripts_a_ler
 docs/
 scripts_a_ler/
+uploads/

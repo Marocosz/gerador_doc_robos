@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Documentação com IA</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #5a9cec;
+            cursor: not-allowed;
+        }
+
+
+        #loading-container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            /* Cinza claro */
+            border-top: 8px solid #007bff;
+            /* Azul */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="form-container">
+            <h1>Gerador de Documentação Robôs Supporte</h1>
+            <form id="doc-form" action="/gerar" method="post" enctype="multipart/form-data">
+                <label for="arquivos">Selecione os arquivos (.py ou .pas):</label>
+                <input type="file" id="arquivos" name="arquivos" multiple required>
+
+                <label for="contexto">Contexto Adicional (Opcional):</label>
+                <textarea id="contexto" name="contexto"
+                    placeholder="Ex: Este sistema faz parte de um projeto de ERP..."></textarea>
+
+                <button type="submit" id="submit-button">Gerar Documentação</button>
+            </form>
+        </div>
+
+        <div id="loading-container" style="display: none;">
+            <h2>Gerando documentação, por favor aguarde...</h2>
+            <p>Este processo pode levar alguns segundos dependendo do tamanho dos arquivos.</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        // Pega os elementos do formulário e dos contêineres
+        const docForm = document.getElementById('doc-form');
+        const submitButton = document.getElementById('submit-button');
+        const formContainer = document.getElementById('form-container');
+        const loadingContainer = document.getElementById('loading-container');
+
+        // Adiciona um "ouvinte" para o evento de 'submit' do formulário
+        docForm.addEventListener('submit', function () {
+            // Quando o formulário for enviado (botão clicado):
+
+            // Desabilita o botão para evitar cliques duplos
+            submitButton.disabled = true;
+            submitButton.innerText = 'Gerando...';
+
+            // Esconde o contêiner do formulário
+            formContainer.style.display = 'none';
+
+            // Mostra o contêiner de carregamento
+            loadingContainer.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

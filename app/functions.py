@@ -76,7 +76,7 @@ def ler_conteudo_pas(caminho_do_arquivo: str):
 
 
 
-def criar_docx_formatado(conteudo: str, nome_arquivo_final: str):
+def criar_docx_formatado(conteudo: str, nome_arquivo_final: str, pasta_destino: str):
     """
     Cria um arquivo .docx com formatação específica
     """
@@ -143,10 +143,13 @@ def criar_docx_formatado(conteudo: str, nome_arquivo_final: str):
         nome_arquivo_final += '.docx'
 
     try:
-        doc.save(f"docs/{nome_arquivo_final}")
-        print(f"'{nome_arquivo_final}' salvo com sucesso")
+        caminho_salvar = os.path.join(pasta_destino, nome_arquivo_final)
+        doc.save(caminho_salvar)
+        print(f"'{nome_arquivo_final}' salvo com sucesso em '{pasta_destino}'")
+        return True
     except Exception as e:
         print(f"Erro ao salvar o arquivo .docx: {e}")
+        return False
         
 
 def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, contexto_adicional: str = "Nenhum."):
