@@ -65,6 +65,7 @@ A aplicação web possui uma funcionalidade central exposta através de algumas 
 **Descrição:** Rota principal que recebe os arquivos de código para processamento.
 
 **Parâmetros (multipart/form-data):**
+
 -
   - **arquivos:** Um ou mais arquivos com extensão `.py` ou `.pas` para serem analisados
   - **contexto:** Um campo de texto opcional com contexto adicional para a IA.
@@ -85,6 +86,7 @@ A aplicação web possui uma funcionalidade central exposta através de algumas 
 **Descrição:** Permite o download de um documento .docx gerado.
 
 **Parâmetros de rota:**
+
 -
    - **filename (string):** O nome do arquivo a ser baixado (ex: DOC_meu_script.py.docx).
    - **Resposta:** O arquivo .docx solicitado.
@@ -96,6 +98,7 @@ A interface do usuário é simples e funcional, projetada para ser intuitiva.
 ### Tela Inicial
 
 A tela inicial apresenta um formulário claro onde o usuário pode:
+
 -
    - Selecionar um ou mais arquivos de código (`.py` ou `.pas`).
    - Adicionar um contexto opcional em uma caixa de texto para guiar a IA.
@@ -108,6 +111,7 @@ Após o envio, o formulário é substituído por um indicador de carregamento an
 ### Tela de Resultados
 
 Ao final do processo, o usuário é direcionado para uma página de resultados que exibe:
+
 -
    - Uma lista de "Documentos Gerados com Sucesso", com um link para download para cada arquivo.
    - Uma lista de "Ocorreram Erros", detalhando qualquer falha que tenha acontecido durante o processamento de algum arquivo.
