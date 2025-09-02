@@ -5,65 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados da Geração</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1,
-        h2 {
-            color: #333;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .success {
-            background-color: #e9f7ef;
-            border-left: 5px solid #28a745;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .error {
-            background-color: #fce8e6;
-            border-left: 5px solid #dc3545;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -74,9 +16,10 @@
         <h2>Documentos Gerados com Sucesso:</h2>
         <ul>
             {% for nome_arquivo in sucessos %}
-            <li class="success">
+            <li class="result-item success">
+                <span>{{ nome_arquivo }}</span>
                 <a href="{{ url_for('download_file', filename=nome_arquivo) }}">
-                    Baixar {{ nome_arquivo }}
+                    Baixar
                 </a>
             </li>
             {% endfor %}
@@ -87,7 +30,7 @@
         <h2>Ocorreram Erros:</h2>
         <ul>
             {% for erro in erros %}
-            <li class="error">{{ erro }}</li>
+             <li class="result-item error">{{ erro }}</li>
             {% endfor %}
         </ul>
         {% endif %}

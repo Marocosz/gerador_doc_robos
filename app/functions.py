@@ -167,10 +167,28 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
         str: A documentação gerada pela IA (em str) ou uma mensagem de erro.
     """
     try:
+        # Pega a chave do ambiente
+        api_key = os.getenv("GEMINI_API_KEY")
+
+        # --- CÓDIGO DE DEBUG A SER ADICIONADO ---
+        # Este bloco vai nos mostrar exatamente o que o contêiner está lendo do .env
+        if api_key:
+            print("\n--- DEBUGGING DA CHAVE DE API ---")
+            print(f"API Key Carregada: Sim")
+            print(f"Primeiros 5 caracteres: '{api_key[:5]}'")
+            print(f"Últimos 5 caracteres: '{api_key[-5:]}'")
+            print(f"Tamanho total da Chave: {len(api_key)} caracteres")
+            print("------------------------------------\n")
+        else:
+            print("\n--- DEBUGGING DA CHAVE DE API ---")
+            print("API Key Carregada: NÃO (Valor é None ou vazio)")
+            print("------------------------------------\n")
+        # --- FIM DO BLOCO DE DEBUGGING ---
+
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
-            temperature=0.1,                # Temperatura muito baixa para alta fidelidade ao código
-            google_api_key=os.getenv("GEMINI_API_KEY")
+            model="gemini-1.5-flash",
+            temperature=0.1,
+            google_api_key=api_key # Passa a chave que acabamos de inspecionar
         )
 
         # Usa o PromptTemplate para preencher as variáveis do seu arquivo de prompts
