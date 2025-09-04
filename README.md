@@ -141,14 +141,10 @@ Antes de começar, você precisará ter instalado em sua máquina:
 Siga os passos abaixo para ter a aplicação rodando em poucos minutos.
 
 #### 1. Clone o Repositório
-Abra seu terminal e use o Git para clonar o projeto para sua máquina local.
+Abra seu terminal (ou use o github desktop) e use o Git para clonar o projeto para sua máquina local.
 
 ```
-bash
-
 git clone https://github.com/Marocosz/gerador_doc_robos.git
-
-cd gerador_doc_robos
 ```
 
 
