@@ -15,7 +15,7 @@ API Web que utiliza Inteligência Artificial para analisar arquivos de código-f
 - [1 - Estrutura](#1-estrutura)
 - [2 - Funcionalidades](#2-funcionalidades)
 - [3 - Frontend](#3-frontend)
-- [4 - Docker](#-docker)
+- [4 - Docker](#4-docker)
 - [5 - Suporte](#5-suporte)
 
 ## <a id="1-estrutura"></a>1 - Estrutura 🏗️
