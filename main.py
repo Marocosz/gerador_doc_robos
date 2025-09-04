@@ -1,6 +1,3 @@
-# main.py
-
-# Dependências do Flask para o servidor web e de 'os' para manipulação de pastas.
 import os
 from flask import Flask, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
@@ -36,6 +33,7 @@ def allowed_file(filename):
     """Helper para validar a extensão dos arquivos enviados."""
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+           
 
 @app.route('/')
 def index():
@@ -65,7 +63,7 @@ def gerar_documentacao():
         caminho_salvo = os.path.join(app.config['UPLOAD_FOLDER'], filename_seguro)
         
         try:
-            # Salva o arquivo no início do bloco 'try'.
+            # Salva o arquivo no início do bloco 'try'
             file.save(caminho_salvo)
 
             # Lê o conteúdo do arquivo com a função apropriada.
@@ -77,7 +75,7 @@ def gerar_documentacao():
             # Tratamento de erro na leitura.
             if isinstance(resultado_leitura, str):
                 erros.append(f"Arquivo '{filename_seguro}': {resultado_leitura}")
-                continue # Pula para o próximo arquivo do loop.
+                continue
             
             conteudo_codigo, nome_base = resultado_leitura
             
@@ -108,6 +106,7 @@ def gerar_documentacao():
 
     # Retorna a página de resultados com as listas de sucessos e erros.
     return render_template('resultados.html', sucessos=sucessos, erros=erros)
+
 
 @app.route('/download/<filename>')
 def download_file(filename):

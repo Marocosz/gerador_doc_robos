@@ -71,7 +71,6 @@ textarea:focus {
     box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
 }
 
-/* Estilo moderno para o botão de upload de arquivo */
 input[type="file"]::file-selector-button {
     background: #4A90E2;
     color: white;

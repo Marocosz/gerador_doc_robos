@@ -1,5 +1,3 @@
-# Este arquivo centraliza as instruções para a IA, facilitando a manutenção.
-
 INSTRUCOES_IA = """
 Você é um engenheiro de software sênior. Analise cuidadosamente o arquivo Python a seguir e gere uma documentação técnica extremamente detalhada em **português do Brasil**.
 

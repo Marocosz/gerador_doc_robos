@@ -170,7 +170,6 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
         # Pega a chave do ambiente
         api_key = os.getenv("GEMINI_API_KEY")
 
-        # --- CÓDIGO DE DEBUG A SER ADICIONADO ---
         # Este bloco vai nos mostrar exatamente o que o contêiner está lendo do .env
         if api_key:
             print("\n--- DEBUGGING DA CHAVE DE API ---")
@@ -183,7 +182,6 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
             print("\n--- DEBUGGING DA CHAVE DE API ---")
             print("API Key Carregada: NÃO (Valor é None ou vazio)")
             print("------------------------------------\n")
-        # --- FIM DO BLOCO DE DEBUGGING ---
 
         llm = ChatGoogleGenerativeAI(
             model="gemini-1.5-flash",
