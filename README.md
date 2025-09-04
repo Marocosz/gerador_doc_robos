@@ -125,7 +125,7 @@ Ao final do processo, o usuário é direcionado para uma página de resultados q
 
 A comunicação entre o frontend e o backend é feita através de requisições HTTP padrão, com o JavaScript gerenciando a exibição do indicador de carregamento para melhorar a experiência do usuário.
 
-<a id="4-docker"></a>4 - Docker 🐳
+## <a id="4-docker"></a>4 - Docker 🐳
 
 A maneira recomendada para executar esta aplicação é através do Docker. Isso garante que o ambiente de execução seja idêntico ao do desenvolvimento, evitando problemas de compatibilidade ou a necessidade de instalar Python e suas dependências manualmente.
 
@@ -163,10 +163,8 @@ Abra o arquivo .env e coloque suas respectivas chaves.
 #### 3. Construa a Imagem Docker
 Este comando lê o Dockerfile e monta um "pacote" completo da sua aplicação, contendo tudo o que ela precisa para rodar.
 
-No terminal, na raiz do projeto, execute:
+No terminal (powershell), na raiz do projeto, execute:
 ```
-bash
-
 docker build -t gerador-docs-web .
 ```
 
@@ -174,9 +172,7 @@ docker build -t gerador-docs-web .
 Com a imagem pronta, este comando irá iniciar a aplicação. Ele conecta as pastas e portas do seu computador com as do contêiner.
 
 ```
-powershell
-
-docker run --rm -it --env-file .env -p 5001:8000 -v "pwd/uploads:/app/uploads"−v"{pwd}/docs:/app/docs" gerador-docs-web
+docker run --rm -it --env-file .env -p 5001:8000 -v "${pwd}/uploads:/app/uploads" -v "${pwd}/docs:/app/docs" gerador-docs-web
 ```
 
 #### 5. Acesse e Use a Aplicação
