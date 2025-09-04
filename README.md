@@ -15,7 +15,8 @@ API Web que utiliza Inteligência Artificial para analisar arquivos de código-f
 - [1 - Estrutura](#1-estrutura)
 - [2 - Funcionalidades](#2-funcionalidades)
 - [3 - Frontend](#3-frontend)
-- [4 - Suporte](#4-suporte)
+- [4 - Docker](#-docker)
+- [5 - Suporte](#5-suporte)
 
 ## <a id="1-estrutura"></a>1 - Estrutura 🏗️
 
@@ -23,19 +24,24 @@ A aplicação foi desenvolvida em Python 3.12+. A estrutura foi organizada em m�
 
 ### 📁 Estrutura de Diretórios
 
-```text
-📂 gerador_doc_robos/
-├── 📂 app/
-│ ├── 🐍 functions.py
-│ └── 🐍 prompts.py
-├── 📂 docs/
-├── 📂 templates/
-│ ├── 🌐 index.html
-│ └── 🌐 resultados.html
-├── 📂 uploads/
+```
+├── 📁 app/
+│   ├── 🐍 functions.py
+│   └── 🐍 prompts.py
+├── 📁 static/
+│   └── 🎨 style.css
+├── 📁 templates/
+│   ├── 🌐 index.html
+│   └── 🌐 resultados.html
+├── 📄 .dockerignore
+├── 📄 .env.example
+├── 📄 .gitattributes
+├── 🚫 .gitignore
+├── 📖 README.md
+├── 🐳 dockerfile
+├── 🐚 entrypoint.sh
+├── 🐍 gerador_mult.py
 ├── 🐍 main.py
-├── 📄 .env
-├── 📄 .gitignore
 └── 📄 requirements.txt
 ```
 
@@ -54,13 +60,12 @@ A aplicação foi desenvolvida em Python 3.12+. A estrutura foi organizada em m�
 
 A aplicação web possui uma funcionalidade central exposta através de algumas rotas simples.
 
-### `GET /`
+### `/`
 
 **Descrição:** Exibe a página principal da aplicação com o formulário para upload de arquivos.
 
-**Resposta:** Página HTML (index.html).
 
-### `POST /gerar`
+### `/gerar`
 
 **Descrição:** Rota principal que recebe os arquivos de código para processamento.
 
@@ -91,6 +96,7 @@ A aplicação web possui uma funcionalidade central exposta através de algumas 
    - **filename (string):** O nome do arquivo a ser baixado (ex: DOC_meu_script.py.docx).
    - **Resposta:** O arquivo .docx solicitado.
 
+
 ## <a id="3-frontend"></a>3 - Frontend 🌐
 
 A interface do usuário é simples e funcional, projetada para ser intuitiva.
@@ -119,6 +125,68 @@ Ao final do processo, o usuário é direcionado para uma página de resultados q
 
 A comunicação entre o frontend e o backend é feita através de requisições HTTP padrão, com o JavaScript gerenciando a exibição do indicador de carregamento para melhorar a experiência do usuário.
 
-## <a id="4-suporte"></a>4 - Suporte 🛠
+<a id="4-docker"></a>4 - Docker 🐳
+
+A maneira recomendada para executar esta aplicação é através do Docker. Isso garante que o ambiente de execução seja idêntico ao do desenvolvimento, evitando problemas de compatibilidade ou a necessidade de instalar Python e suas dependências manualmente.
+
+### Pré-requisitos
+
+Antes de começar, você precisará ter instalado em sua máquina:
+-
+   - **Git**: Para clonar o código-fonte do projeto.
+   - **Docker Desktop**: Para construir e executar o contêiner da aplicação.
+   - **Uma Chave de API do Gemini**: Essencial para a funcionalidade de IA. Você pode obter uma gratuitamente no Google AI Studio.
+
+### 🚀 Como Executar
+Siga os passos abaixo para ter a aplicação rodando em poucos minutos.
+
+#### 1. Clone o Repositório
+Abra seu terminal e use o Git para clonar o projeto para sua máquina local.
+
+```
+bash
+
+git clone https://github.com/Marocosz/gerador_doc_robos.git
+
+cd gerador_doc_robos
+```
+
+
+#### 2. Crie seu Arquivo de Ambiente
+O projeto utiliza um arquivo .env para armazenar sua chave de API secreta. Há um arquivo de exemplo chamado .env.example no repositório para te guiar.
+
+Faça uma cópia do arquivo .env.example e renomeie-a para .env.
+
+Abra o arquivo .env e coloque suas respectivas chaves.
+
+
+#### 3. Construa a Imagem Docker
+Este comando lê o Dockerfile e monta um "pacote" completo da sua aplicação, contendo tudo o que ela precisa para rodar.
+
+No terminal, na raiz do projeto, execute:
+```
+bash
+
+docker build -t gerador-docs-web .
+```
+
+#### 4. Inicie o Contêiner
+Com a imagem pronta, este comando irá iniciar a aplicação. Ele conecta as pastas e portas do seu computador com as do contêiner.
+
+```
+powershell
+
+docker run --rm -it --env-file .env -p 5001:8000 -v "pwd/uploads:/app/uploads"−v"{pwd}/docs:/app/docs" gerador-docs-web
+```
+
+#### 5. Acesse e Use a Aplicação
+Após executar o comando acima, o terminal exibirá uma mensagem de boas-vindas. Agora, abra seu navegador de internet e acesse:
+
+http://localhost:5001
+
+Pronto! A interface da aplicação estará pronta para uso. Selecione seus arquivos, gere as documentações e baixe os resultados. Os arquivos .docx gerados aparecerão na sua pasta docs.
+
+
+## <a id="5-suporte"></a>5 - Suporte 🛠
 
 Se tiver dúvidas, sugestões ou encontrar algum erro, sinta-se à vontade para abrir uma issue no repositório do projeto.
