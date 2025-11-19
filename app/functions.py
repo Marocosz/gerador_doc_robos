@@ -186,7 +186,7 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
         llm = ChatGoogleGenerativeAI(
             model="gemini-1.5-flash",
             temperature=0.1,
-            google_api_key=api_key # Passa a chave que acabamos de inspecionar
+            api_key=api_key # Passa a chave que acabamos de inspecionar
         )
 
         # Usa o PromptTemplate para preencher as variáveis do seu arquivo de prompts
