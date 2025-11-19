@@ -20,4 +20,4 @@ EXPOSE 8000
 
 # Ponto de Entrada e Comando
 ENTRYPOINT ["./entrypoint.sh"]
-CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "main:app"]
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "--timeout", "300", "main:app"]
