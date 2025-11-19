@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Armazena a porta externa em uma variável (opcional, para clareza)
-HOST_PORT=5001
+HOST_PORT=8000
 
 # Exibe a mensagem de boas-vindas formatada
 echo ""
