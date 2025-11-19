@@ -184,7 +184,7 @@ def gerar_resposta_ia_document(codigo_para_analise: str, nome_do_arquivo: str, c
             print("------------------------------------\n")
 
         llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             temperature=0.1,
             api_key=api_key # Passa a chave que acabamos de inspecionar
         )
